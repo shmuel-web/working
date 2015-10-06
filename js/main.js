@@ -42,16 +42,6 @@ $(document).ready(function() {
 			    //...
 			}
 
-			$('main').on('click', '[data-type="page-transition"]', function(event){
-			    event.preventDefault();
-			    //detect which page has been selected
-			    var newPage = $(this).attr('href');
-			    //if the page is not animating - trigger animation
-			    if( !isAnimating ) changePage(newPage, true);
-			});
-
-			
-
 			function loadNewContent(url, bool) {
 			  	var newSectionName = 'cd-'+url.replace('.html', ''),
 			  		section = $('<div class="cd-main-content '+newSectionName+'"></div>');
@@ -69,6 +59,14 @@ $(document).ready(function() {
 			      	}
 				});
 			}
+
+			$('main').on('click', '[data-type="page-transition"]', function(event){
+			    event.preventDefault();
+			    //detect which page has been selected
+			    var newPage = $(this).attr('href');
+			    //if the page is not animating - trigger animation
+			    if( !isAnimating ) changePage(newPage, true);
+			});
 
 			$(window).on('popstate', function() {
 			    var newPageArray = location.pathname.split('/'),
