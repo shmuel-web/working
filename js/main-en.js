@@ -38,11 +38,11 @@ $(document).ready(function() {
 				
 				        // will first fade out the loading animation
 				
-				    jQuery("#status").fadeOut();
+				    jQuery("#status").delay(2600).fadeOut();
 				
 				        // will fade out the whole DIV that covers the website.
 				
-				    jQuery("#preloader").delay(1000).fadeOut("slow");
+				    jQuery("#preloader").delay(3500).fadeOut("slow");
 				
 				})
 			//end

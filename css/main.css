@@ -1,9 +1,426 @@
+/*fullPage.js
+===============================================*/
+/**
+ * fullPage 2.6.6
+ * https://github.com/alvarotrigo/fullPage.js
+ * MIT licensed
+ *
+ * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
+ */
+html.fp-enabled,
+.fp-enabled body {
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+
+    /*Avoid flicker on slides transitions for mobile phones #336 */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#superContainer {
+    height: 100%;
+    position: relative;
+
+    /* Touch detection for Windows 8 */
+    -ms-touch-action: none;
+
+    /* IE 11 on Windows Phone 8.1*/
+    touch-action: none;
+}
+.fp-section {
+    position: relative;
+    -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
+    -moz-box-sizing: border-box; /* <=28 */
+    box-sizing: border-box;
+}
+.fp-slide {
+    float: left;
+}
+.fp-slide, .fp-slidesContainer {
+    height: 100%;
+    display: block;
+}
+.fp-slides {
+    z-index:1;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: all 0.3s ease-out; /* Safari<=6 Android<=4.3 */
+    transition: all 0.3s ease-out;
+}
+.fp-section.fp-table, .fp-slide.fp-table {
+    display: table;
+    table-layout:fixed;
+    width: 100%;
+}
+.fp-tableCell {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+.fp-slidesContainer {
+    float: left;
+    position: relative;
+}
+.fp-controlArrow {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    margin-top: -38px;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.fp-controlArrow.fp-prev {
+    left: 15px;
+    width: 0;
+    border-width: 38.5px 34px 38.5px 0;
+    border-color: transparent #fff transparent transparent;
+}
+.fp-controlArrow.fp-next {
+    right: 15px;
+    border-width: 38.5px 0 38.5px 34px;
+    border-color: transparent transparent transparent #fff;
+}
+.fp-scrollable {
+    overflow: scroll;
+}
+.fp-notransition {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+#fp-nav {
+    position: fixed;
+    z-index: 100;
+    margin-top: -32px;
+    top: 50%;
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+}
+#fp-nav.right {
+    right: 17px;
+}
+#fp-nav.left {
+    left: 17px;
+}
+.fp-slidesNav{
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    opacity: 1;
+}
+.fp-slidesNav.bottom {
+    bottom: 17px;
+}
+.fp-slidesNav.top {
+    top: 17px;
+}
+#fp-nav ul,
+.fp-slidesNav ul {
+  margin: 0;
+  padding: 0;
+}
+#fp-nav ul li,
+.fp-slidesNav ul li {
+    display: block;
+    width: 14px;
+    height: 13px;
+    margin: 7px;
+    position:relative;
+}
+.fp-slidesNav ul li {
+    display: inline-block;
+}
+#fp-nav ul li a,
+.fp-slidesNav ul li a {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span{
+    height: 12px;
+    width: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 100%;
+ }
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    height: 4px;
+    width: 4px;
+    border: 0;
+    background: #333;
+    left: 50%;
+    top: 50%;
+    margin: -2px 0 0 -2px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span{
+    width: 10px;
+    height: 10px;
+    margin: -5px 0px 0px -5px;
+}
+#fp-nav ul li .fp-tooltip {
+    position: absolute;
+    top: -2px;
+    color: #fff;
+    font-size: 14px;
+    font-family: arial, helvetica, sans-serif;
+    white-space: nowrap;
+    max-width: 220px;
+    overflow: hidden;
+    display: block;
+    opacity: 0;
+    width: 0;
+}
+#fp-nav ul li:hover .fp-tooltip,
+#fp-nav.fp-show-active a.active + .fp-tooltip {
+    -webkit-transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in;
+    width: auto;
+    opacity: 1;
+}
+#fp-nav ul li .fp-tooltip.right {
+    right: 20px;
+}
+#fp-nav ul li .fp-tooltip.left {
+    left: 20px;
+}
+.fp-auto-height.fp-section,
+.fp-auto-height .fp-slide,
+.fp-auto-height .fp-tableCell{
+    height: auto !important;
+}
+
 /*butons
-=========================*/
-@import url(component.css);
+==============================================*/
+.cbutton {
+	position: relative;
+	display: inline-block;
+	margin: 4rem;
+	padding: 0;
+	border: none;
+	background: none;
+	color: rgb(30,31,71);
+	font-size: 4rem;
+	overflow: visible;
+	-webkit-transition: color 0.7s;
+	transition: color 0.7s;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.cbutton.cbutton--click,
+.cbutton:focus {
+	outline: none;
+	color: #fff;
+}
+
+.cbutton__icon {
+	display: block;
+}
+
+.cbutton__text {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -35px 0 0 -35px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	content: '';
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton--box {
+	width: 24px;
+	height: 24px;
+	border: 4px solid rgb(22, 35, 47);
+}
+
+.cbutton--box-color-1 {
+	background: #ff8b00;
+}
+
+.cbutton--box-color-2 {
+	background: #b61854;
+}
+
+.cbutton--box-color-3 {
+	background: #1d5cab;
+}
+
+.cbutton--box-color-4 {
+	background: #f2438c;
+}
+
+.cbutton--box-color-5 {
+	background: #ff6414;
+}
+
+.cbutton--box-color-6 {
+	background: #5ed500;
+}
+
+.cbutton--box-color-7 {
+	background: #0077ff;
+}
+
+.cbutton--box-color-8 {
+	background: #7bff00;
+}
+
+.cbutton--box-color-9 {
+	background: rgb(30,31,71);
+}
+
+/* Individual Effects */
+/* Tamara */
+.cbutton--effect-tamara::after {
+	box-shadow: 0 0 0 3px rgba(111,148,182,0.05);
+}
+
+.cbutton--effect-tamara.cbutton--click::after {
+	-webkit-animation: anim-effect-tamara 0.5s ease-out forwards;
+	animation: anim-effect-tamara 0.5s ease-out forwards;
+}
+
+@-webkit-keyframes anim-effect-tamara {
+	0% {
+		box-shadow: 0 0 0 3px rgba(111,148,182,0.3);
+		opacity: 1;
+		-webkit-transform: scale3d(0.6, 0.6, 1);
+		transform: scale3d(0.6, 0.6, 1);
+	}
+	100% {
+		box-shadow: 0 0 0 100px rgba(111,148,182,0);
+		opacity: 0;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes anim-effect-tamara {
+	0% {
+		box-shadow: 0 0 0 3px rgba(111,148,182,0.3);
+		opacity: 1;
+		-webkit-transform: scale3d(0.6, 0.6, 1);
+		transform: scale3d(0.6, 0.6, 1);
+	}
+	100% {
+		box-shadow: 0 0 0 100px rgba(111,148,182,0);
+		opacity: 0;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+/* Ivana */
+.cbutton--effect-ivana::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -35px 0 0 -35px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	content: '';
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton--effect-ivana::before,
+.cbutton--effect-ivana::after {
+	box-shadow: 0 0 0 2px rgba(111,148,182,0.5);
+}
+
+.cbutton--effect-ivana.cbutton--click::before {
+	-webkit-animation: anim-effect-ivana-1 0.5s forwards;
+	animation: anim-effect-ivana-1 0.5s forwards;
+}
+
+.cbutton--effect-ivana.cbutton--click::after {
+	-webkit-animation: anim-effect-ivana-2 0.5s forwards;
+	animation: anim-effect-ivana-2 0.5s forwards;
+}
+
+@-webkit-keyframes anim-effect-ivana-1 {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: scale3d(1.1, 1.1, 1);
+		transform: scale3d(1.1, 1.1, 1);
+	}
+}
+
+@keyframes anim-effect-ivana-1 {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: scale3d(1.1, 1.1, 1);
+		transform: scale3d(1.1, 1.1, 1);
+	}
+}
+
+@-webkit-keyframes anim-effect-ivana-2 {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	50%, 100% {
+		opacity: 0;
+		-webkit-transform: scale3d(1.2, 1.2, 1);
+		transform: scale3d(1.2, 1.2, 1);
+	}
+}
+
+@keyframes anim-effect-ivana-2 {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	50%, 100% {
+		opacity: 0;
+		-webkit-transform: scale3d(1.2, 1.2, 1);
+		transform: scale3d(1.2, 1.2, 1);
+	}
+}
+
 
 /*preloader
-=======================*/
+===================================================================================*/
 #preloader  {
      position: absolute;
      top: 0;
@@ -17,21 +434,22 @@
  }
  
 #status  {
-     width: 200px;
-     height: 200px;
+     width: 100vw;
+     height: 80vh;
      position: absolute;
      left: 50%;
      top: 50%;
-     background-image: url();
+     background-image: url(../img/2.svg);
      background-repeat: no-repeat;
      background-position: center;
-     margin: -100px 0 0 -100px;
+     background-size: contain;
+     margin: -40vh 0 0 -50vw;
  }
 
 
 
 /*fonts
-=======================================*/
+===================================================================================================*/
 @font-face {
   font-family: 'NachlieliCLM-Bold';
   src: url('../web-fonts/nachlieliclm-bold.eot');
@@ -78,7 +496,7 @@
 
 }
 /*genral class
-=========================*/
+=====================================================================================*/
 
 body ,a {
 	font-family: NachlieliCLM-Light,FontAwesome, arial;
@@ -184,7 +602,7 @@ ul, li {
 
 
 /*media querys
-===================================*/
+===================================================================================================================*/
 /*mobile
 =============*/
 @media (min-width: 100px) {
@@ -234,7 +652,7 @@ ul, li {
 
 }
 /*tablet
-============*/
+================================================================================================================*/
 @media (min-width: 768px) {
 
 	h1 {
@@ -277,7 +695,7 @@ ul, li {
 	}
 }
 /*pc
-=================*/
+=================================================================================================*/
 @media (min-width: 1100px) {
 
 
