@@ -433,18 +433,7 @@ html.fp-enabled,
 
  }
  
-#status  {
-     width: 100vw;
-     height: 80vh;
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     background-image: url(../img/2.svg);
-     background-repeat: no-repeat;
-     background-position: center;
-     background-size: contain;
-     margin: -40vh 0 0 -50vw;
- }
+
 
 
 
@@ -598,6 +587,9 @@ ul, li {
  margin-bottom: 1.5rem;
 
 }
+ul .nav .navbar-nav {
+	background-color: transparent;
+}
 
 
 
@@ -607,7 +599,18 @@ ul, li {
 =============*/
 @media (min-width: 100px) {
 
-
+#status  {
+     width: 100vw;
+     height: 100vh;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     background-image: url(../img/1.png);
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     margin: -50vh 0 0 -50vw;
+ }
 	h1 {
 	font-size: 6rem;
 
@@ -644,7 +647,7 @@ ul, li {
 	.navbar-nav {
     	margin: 0;
     	padding: 0;
-    	background-color: #fff;
+    	background-color: transparent;
 	}
 
 }
@@ -654,6 +657,18 @@ ul, li {
 /*tablet
 ================================================================================================================*/
 @media (min-width: 768px) {
+	#status  {
+     width: 100vw;
+     height: 80vh;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     background-image: url(../img/3.svg);
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     margin: -40vh 0 0 -50vw;
+ }
 
 	h1 {
 	font-size: 8rem;
@@ -697,7 +712,18 @@ ul, li {
 /*pc
 =================================================================================================*/
 @media (min-width: 1100px) {
-
+	#status  {
+     width: 100vw;
+     height: 60vh;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     background-image: url(../img/3.svg);
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     margin: -30vh 0 0 -50vw;
+ }
 
 	h1 {
 	font-size: 10rem;
