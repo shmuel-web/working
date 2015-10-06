@@ -115,7 +115,7 @@ ul, li {
 }
 .list-head{
 	list-style: none;
-	margin-right: -2rem;
+	margin-left: -2rem;
 }
 .navbar-brand{
 	padding: 0;
