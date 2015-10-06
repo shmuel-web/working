@@ -105,9 +105,9 @@ ul, li {
 	background-color: transparent;
 	border-color: transparent;
 }
-.whitey{
+.open-mobile-menu{
 	background-color: white;
-	border-color: white;
+	border-color: rgb(41, 87, 168);
 }
 
 
@@ -131,7 +131,7 @@ ul, li {
 }
 .navicon {
 	font-size: 2.5rem;
-	color: rgb(41, 87, 168);c
+	color: rgb(41, 87, 168);
 }
 .navbar-toggle{
 	margin:0;
