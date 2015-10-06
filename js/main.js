@@ -22,11 +22,11 @@ $(document).ready(function() {
 
 			$('.navbar-toggle').click(function(){
 				if ($('.navicon').hasClass('fa-bars')) {
-					$('.navbar-default').addClass('whitey');
+					$('.navbar-default').addClass('open-mobile-menu');
 				    $('.navicon').removeClass('fa-bars').addClass('fa-times');
 				}
 				else{
-					$('.navbar-default').removeClass('whitey');
+					$('.navbar-default').removeClass('open-mobile-menu');
 				   	$('.navicon').removeClass('fa-times').addClass('fa-bars');
 				}
 			});
