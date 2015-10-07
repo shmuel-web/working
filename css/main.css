@@ -653,13 +653,13 @@ ul .nav .navbar-nav {
 }
 
 
-}
+
 /*tablet
 ================================================================================================================*/
-@media (min-width: 767px) and (max-width: 1099px) {
+@media (min-width: 769px) and (max-width: 1099px) {
 	#status  {
      width: 100vw;
-     height: 80vh;
+     height: 60vh;
      position: absolute;
      left: 50%;
      top: 50%;
@@ -667,7 +667,7 @@ ul .nav .navbar-nav {
      background-repeat: no-repeat;
      background-position: top;
      background-size: contain;
-     margin: -40vh 0 0 -50vw;
+     margin: -30vh 0 0 -50vw;
  	}
 
 	h1 {

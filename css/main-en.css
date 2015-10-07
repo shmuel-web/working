@@ -598,7 +598,7 @@ ul, li {
      top: 50%;
      background-image: url(../img/3.svg);
      background-repeat: no-repeat;
-     background-position: top;
+     background-position: center;
      background-size: contain;
      margin: -50vh 0 0 -40vw;
  }
@@ -647,13 +647,13 @@ ul, li {
 }
 
 
-}
+
 /*tablet
 ============*/
 @media (min-width: 768px) {
 	#status  {
      width: 100vw;
-     height: 80vh;
+     height: 60vh;
      position: absolute;
      left: 50%;
      top: 50%;
@@ -661,7 +661,7 @@ ul, li {
      background-repeat: no-repeat;
      background-position: top;
      background-size: contain;
-     margin: -40vh 0 0 -50vw;
+     margin: -30vh 0 0 -50vw;
  }
 
 
