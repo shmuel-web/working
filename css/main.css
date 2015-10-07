@@ -597,19 +597,19 @@ ul .nav .navbar-nav {
 ===================================================================================================================*/
 /*mobile
 =============*/
-@media (min-width: 100px) {
+@media (min-width: 0px) and (max-width: 768px) {
 
 #status  {
-     width: 100vw;
+     width: 80vw;
      height: 100vh;
      position: absolute;
      left: 50%;
      top: 50%;
-     background-image: url(../img/1.png);
+     background-image: url(../img/3.svg);
      background-repeat: no-repeat;
-     background-position: top;
+     background-position: center;
      background-size: contain;
-     margin: -50vh 0 0 -50vw;
+     margin: -50vh 0 0 -40vw;
  }
 	h1 {
 	font-size: 6rem;
@@ -656,7 +656,7 @@ ul .nav .navbar-nav {
 }
 /*tablet
 ================================================================================================================*/
-@media (min-width: 768px) {
+@media (min-width: 767px) and (max-width: 1099px) {
 	#status  {
      width: 100vw;
      height: 80vh;
@@ -668,7 +668,7 @@ ul .nav .navbar-nav {
      background-position: top;
      background-size: contain;
      margin: -40vh 0 0 -50vw;
- }
+ 	}
 
 	h1 {
 	font-size: 8rem;
